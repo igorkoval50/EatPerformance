@@ -1,0 +1,109 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block base_head %}
+    {% sw_include '@Storefront/storefront/page/product-detail/meta.html.twig' %}
+{% endblock %}
+
+{% block base_content %}
+    {% block page_product_detail %}
+
+        <div class="product-detail"
+             itemscope
+             itemtype="https://schema.org/Product">
+            {% block page_product_detail_inner %}
+                {% block page_product_detail_content %}
+                    <div class="product-detail-content">
+                        {% block page_product_detail_breadcrumb %}
+                            <div class="breadcrumb product-breadcrumb container">
+                                {% sw_include '@Storefront/storefront/component/product/breadcrumb.html.twig' with {
+                                    navigationTree: page.header.navigation.tree,
+                                    categoryTree: page.product.categoryTree|last,
+                                    product: page.product
+                                } only %}
+                            </div>
+                        {% endblock %}
+
+                        {% set mediaItems = page.product.media.media %}
+
+                        {% block page_product_detail_main %}
+                            <div class="row product-detail-main">
+                                {% block page_product_detail_media %}
+                                    <div class="col-lg-4 product-detail-media">
+                                        {% if page.product.media %}
+                                            {% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
+                                                'mediaItems': mediaItems,
+                                                'zoom': true,
+                                                'zoomModal': true,
+                                                'displayMode': 'contain',
+                                                'gutter': 5,
+                                                'minHeight': '430px',
+                                                'navigationArrows': 'inside',
+                                                'navigationDots': 'inside',
+                                                'galleryPosition': 'left',
+                                                'isProduct': true,
+                                                'fallbackImageTitle': page.product.translated.name,
+                                                'startIndexThumbnails': page.product.cover.position + 1,
+                                                'startIndexSlider': page.product.cover.position + 1
+                                            } %}
+                                        {% endif %}
+                                    </div>
+                                {% endblock %}
+
+                                {% block page_product_detail_tabs %}
+                                    <div class="col-lg-5 product-detail-tabs">
+                                        {% block page_product_detail_headline %}
+                                            <div class="align-items-center product-detail-headline">
+                                                {% sw_include '@Storefront/storefront/page/product-detail/headline.html.twig' %}
+                                            </div>
+                                        {% endblock %}
+                                        {% sw_include '@Storefront/storefront/page/product-detail/description.html.twig' %}
+                                    </div>
+                                {% endblock %}
+
+                                {% block page_product_detail_buy %}
+                                    <div class="col-lg-3 product-detail-buy">
+                                        {% sw_include '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block page_product_detail_cross_selling %}
+                    <div class="product-detail-tabs product-detail-cross-selling">
+                        {% sw_include '@Storefront/storefront/page/product-detail/cross-selling/tabs.html.twig' with {
+                            crossSellings: page.crossSellings
+                        } only %}
+                    </div>
+
+                {% endblock %}
+
+                {% block page_product_detail_cross_selling_second %}
+                    <div class="product-detail-tabs product-detail-cross-selling">
+                        {% sw_include '@Storefront/storefront/page/product-detail/cross-selling/tabs-second.html.twig' with {
+                            crossSellings: page.crossSellings
+                        } only %}
+                    </div>
+
+
+                    {# simplify ID access #}
+                    {#{% set sportsMediaId1 = page.product.customFields.custom_icon_detail_listing_01 %}#}
+                    {#{% set sportsMediaId2 = page.product.customFields.custom_icon_detail_listing_02 %}#}
+
+                    {# fetch media as batch - optimized for performance #}
+                    {#{% set mediaCollection1 = searchMedia([sportsMediaId1], context.context) %}#}
+                    {#{% set mediaCollection2 = searchMedia([sportsMediaId2], context.context) %}#}
+
+                    {# extract single media object #}
+                    {#{% set sportsMedia1 = mediaCollection1.get(sportsMediaId1) %}#}
+                    {#{% set sportsMedia2 = mediaCollection2.get(sportsMediaId2) %}#}
+
+                    {#<img src="{{ sportsMedia1.url }}" alt="test">#}
+                    {#<img src="{{ sportsMedia2.url }}" alt="test">#}
+
+                {% endblock %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}
