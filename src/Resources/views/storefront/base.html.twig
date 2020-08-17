@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+    {% block base_header %}
+        <header class="header-main">
+            {% block base_header_inner %}
+                <div class="container">
+                    {% sw_include '@Storefront/storefront/layout/header/header.html.twig' %}
+                    <div class="nav-main">
+                        {% block base_navigation_inner %}
+                            {% sw_include '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </header>
+    {% endblock %}
+
+    {% block base_navigation %}
+    {% endblock %}

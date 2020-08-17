@@ -1,0 +1,7 @@
+@include media-breakpoint-up(sm) {
+  body.is-ctl-product.is-act-index{
+  .offcanvas.is-right.is-open{
+    transition-delay: 1s;
+  }
+}
+}

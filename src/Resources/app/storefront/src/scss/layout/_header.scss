@@ -1,0 +1,333 @@
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//
+// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
+
+
+.header-main{
+    //background: #64aca9;
+    background: #F49F8D;
+    padding-bottom: 20px;
+    min-height: 140px;
+
+    .top-bar-nav{
+        min-height: 30px;
+        .topmidtext-col{
+            position: absolute;
+            color: white;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            display: inline-block;
+            text-align: center;
+            width: 170px;
+            border: 1px solid #fff;
+            border-top: 0px;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            padding-bottom: 3px;
+        }
+        .top-bar-nav-text{
+            display: none;
+        }
+
+        .top-bar-nav-btn{
+            .btn {
+                color: $white;
+            }
+        }
+    }
+
+    .custom-topbar-col{
+        padding: 0px 0px;
+    }
+
+    .header-logo-col{
+        z-index: 1;
+        .header-logo-main-link{
+            height: 10px;
+        }
+        .header-logo-main-img{
+            max-height: 85px;
+        }
+    }
+    .header-row {
+        min-height: 30px;
+    }
+    .social-icons-col {
+        text-align: center;
+        .social-icons-top{
+            padding-left: 0px;
+                li{
+                    display: inline-block;
+                    .social-icons{
+                        display: inline-block;
+                        max-width: 40px;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+        }
+    }
+    .header-search {
+        .input-group{
+            border: 1px solid $white;
+        }
+    }
+    .header-search-btn{
+        border: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        outline: 0;
+        background: transparent;
+    }
+    .header-search-input{
+        border: 0px;
+        outline: 0;
+        border-radius: 0px;
+        background: transparent;
+        text-align: center;
+        font-size: 11px;
+
+        &::-webkit-input-placeholder { /* Edge */
+          color: $white;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: $white;
+        }
+        &::placeholder {
+          color: $white;
+        }
+    }
+    .header-actions-col{
+        .btn{
+            .icon{
+              color: $white;
+            }
+        }
+    }
+    .top-bar-nav-btn{
+        &.btn{
+            color: $white;
+
+            &:hover{
+                color: $white;
+            }
+
+            .top-bar-list-icon{
+                margin-right: -2px;
+            }
+        }
+    }
+}
+
+.header-cart-total{
+    display: none;
+}
+
+.nav-main{
+    position: relative;
+    z-index: 1;
+}
+
+.img-fluid{
+    position: relative;
+    transition: all ease 2s;
+}
+
+.header-cart {
+    .header-cart-badge{
+        background: #fff;
+        border: 1px solid #64aca9;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-main {
+        .header-logo-col{
+            margin: 0px 0px;
+            position: relative;
+            top: -10px;
+        }
+    }
+}
+
+
+
+@include media-breakpoint-up(sm){
+
+    .header-search-col{
+        .collapse {
+            &:not(.show){
+                display: none;
+            }
+
+            &.show{
+                display: block;
+            }
+        }
+    }
+
+    .header-main {
+        .header-logo-col {
+            .header-logo-main-img{
+                max-height: 150px;
+            }
+
+            .header-logo-main-link{
+                height: 60px;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .header-main{
+        position: relative;
+
+        .header-logo-col{
+            position: absolute;
+            bottom: 35px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            z-index: 1;
+            padding: 0;
+            width: 150px;
+        }
+
+
+        &.fixed-header {
+
+            .container {
+                transform: scale(0.9);
+                -webkit-transition: all .3s ease;
+                transition: all .3s ease;
+                position: relative;
+                top: -8px;
+            }
+
+            .header-row {
+                min-height: 0;
+                padding: 0;
+            }
+
+            .header-actions-inner{
+                .col-auto {
+                    &.d-sm-none{
+                        display: block !important;
+                    }
+                }
+            }
+
+            .header-search-col{
+                .collapse {
+                    &:not(.show){
+                        display: none;
+                    }
+
+                    &.show{
+                        display: block;
+                    }
+                }
+            }
+
+            .header-logo-col{
+                bottom: -25px;
+
+                .header-logo-main-img{
+                    max-height: 150px;
+                }
+            }
+
+            .search-collapse{
+                display: inline-block !important;
+            }
+        }
+
+        .header-row {
+            min-height: 20px;
+        }
+
+        .header-actions-col{
+            padding-right: 10px;
+        }
+
+    }
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 300;
+        transition: all 0.8s ease;
+    }
+    .header-cart-badge{
+      display: block;
+    }
+
+}
+
+@include media-breakpoint-up(lg) {
+    .header-main{
+        min-height: 180px;
+        .header-actions-col{
+
+            .header-actions-inner{
+                float: right;
+
+            }
+        }
+        .header-logo-col{
+            bottom: unset;
+            top: 90px;
+
+            .header-logo-main-link{
+                height: 170px;
+            }
+
+            .header-logo-main-img{
+                max-height: 150px;
+            }
+        }
+        .social-icons-col {
+            text-align: left;
+        }
+
+        &.fixed-header{
+            min-height: unset;
+            max-height: 150px;
+
+            .header-logo-col{
+                bottom: unset;
+                top: 50px;
+            }
+        }
+
+    }
+
+    //.header-search-col{
+    //    .collapse{
+    //        &:not(.show) {
+    //            display: block;
+    //        }
+    //    }
+    //}
+
+
+}

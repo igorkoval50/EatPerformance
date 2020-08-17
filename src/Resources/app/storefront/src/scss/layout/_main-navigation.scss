@@ -1,0 +1,104 @@
+/*
+Main navigation
+==============================================
+Custom styling for main navigation on larger screens.
+
+Based on bootstrap nav:
+https://getbootstrap.com/docs/4.3/components/navs/
+*/
+
+.main-navigation {
+  display: none;
+}
+
+@include media-breakpoint-up(md) {
+  .main-navigation-link {
+    color: $white;
+    padding: 10px 9px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:nth-child(4) {
+      padding-right: 180px;
+
+    }
+
+    .main-navigation-link-text {
+      border-bottom: 2px solid transparent;
+      padding-bottom: 3px;
+      font-size: 14px
+    }
+
+    &:hover,
+    &.is-open {
+      color: $white;
+    }
+
+    &.active {
+      color: $white;
+      font-weight: normal;
+
+      .main-navigation-link-text {
+        border-color: #fff;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .main-navigation {
+    display: inherit;
+  }
+
+  .main-navigation-link{
+    .main-navigation-link-text{
+      font-size: 16px;
+    }
+
+    &:nth-child(4){
+      padding-right: 215px;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .main-navigation-link {
+    padding: 10px 20px;
+    .main-navigation-link-text{
+      font-size: 18px;
+    }
+
+    &:nth-child(4){
+      padding-right: 220px;
+    }
+  }
+
+}
+
+@media screen and (min-width: 1349px) {
+  .main-navigation-link {
+    padding: 10px 17px;
+    .main-navigation-link-text{
+      font-size: 21px;
+    }
+
+    &:nth-child(4){
+      padding-right: 230px;
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .main-navigation-link {
+    padding: 10px 17px;
+    .main-navigation-link-text{
+      font-size: 21px;
+    }
+    &:nth-child(4){
+      padding-right: 250px;
+    }
+
+  }
+}

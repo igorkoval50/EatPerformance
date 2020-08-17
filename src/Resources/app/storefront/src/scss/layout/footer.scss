@@ -1,0 +1,260 @@
+/*
+Footer
+==================================================
+Contains custom skin styles for the footer located at the bottom of the page.
+*/
+
+.footer-main {
+  border-top: 0;
+  //background: #64aca9;
+  background: #F49F8D;
+
+  .social-icons-col {
+    text-align: center;
+
+    .social-icons-footer{
+      margin: 10px auto;
+      padding-left: 0px;
+
+      li{
+        display: inline-block;
+        .social-icons{
+          display: inline-block;
+          max-width: 40px;
+          img{
+            width: 100%;
+          }
+        }
+      }
+    }
+
+  }
+
+  .dhl-icon{
+    text-align: center;
+
+    img{
+      max-width: 180px;
+      margin: 10px auto;
+      display: block;
+    }
+
+  }
+
+  .footer-column-headline {
+    text-transform: uppercase;
+  }
+
+  .footer-contact-hotline{
+    color: $white;
+  }
+
+  .footer-contact-form{
+    display: none;
+  }
+
+  .footer-image {
+    position: relative;
+    height: 90px;
+
+    img{
+      width: 100%;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+    }
+  }
+
+  .footer-column-toggle{
+    .icon{
+      color: $white;
+    }
+  }
+
+}
+
+.footer-minimal{
+  .footer-image {
+    text-align: center;
+
+    img{
+      max-width: 1360px;
+    }
+  }
+}
+
+.footer-column {
+  border-bottom: 1px solid $white;
+  position: relative;
+}
+
+.footer-column-headline {
+  color: $white;
+  font-size: $font-size-lg;
+}
+
+.footer-link {
+  color: $white;
+
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.footer-logos{
+  padding: 15px 0px;
+
+  .footer-logo{
+
+    &.is-payment {
+      margin: 12px 10px 0px 0px;
+      display: inline-block;
+    }
+  }
+
+  .footer-payment-column{
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .footer-badges-column {
+    margin: 0px;
+    text-align: center;
+
+    .logos-footer-right {
+      margin: 0px auto;
+      padding: 0px;
+
+      li {
+        display: inline-block;
+        width: 45px;
+        padding: 0px 0px;
+        margin: 0px 2px;
+
+        img{
+          width: 100%;
+          max-width: 50px;
+        }
+
+      }
+
+    }
+  }
+}
+
+.footer-bottom{
+
+  padding: 0px 0px;
+  border-top: 1px solid $white;
+
+  .footer-column-headline {
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .footer-column-content-inner{
+
+    .list-unstyled{
+      column-count: 2;
+      text-align: left;
+    }
+
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .footer-columns {
+    border-bottom: 0px;
+    padding-bottom: 0px;
+  }
+  .footer-column {
+    border-bottom: 0px;
+  }
+  div#collapseFooter1:after {
+    content: '';
+    width: 1px;
+    height: 80%;
+    display: block;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    top: 25px;
+  }
+  .footer-main{
+    .social-icons-col {
+      text-align: center;
+      .social-icons-footer{
+        padding-left: 0px;
+        position: absolute;
+        top: 60px;
+        left: 0px;
+        right: 0px;
+        margin: 0 auto;
+      }
+    }
+    .footer-column-headline {
+      padding-top: 30px;
+    }
+    .dhl-icon{
+      img{
+        position: absolute;
+        top: 69px;
+        right: 25px;
+        margin: 0px 0px;
+      }
+    }
+    .footer-image {
+      height: 230px;
+    }
+  }
+  .footer-logos{
+    border-top: 1px solid $white;
+    .footer-logo{
+      &.is-payment {
+        float: left;
+      }
+    }
+    .footer-payment-column{
+      margin-bottom: 0px;
+    }
+    .footer-badges-column {
+      text-align: right;
+
+      .logos-footer-right {
+        margin: 0px;
+
+        li {
+          display: inline-block;
+          width: 45px;
+          padding: 0px 0px;
+          margin: 0px 2px;
+
+          img{
+            width: 100%;
+            max-width: 50px;
+          }
+
+        }
+
+      }
+    }
+
+  }
+  .footer-bottom{
+    border-top: 0px;
+    .footer-column-headline {
+      text-align: center;
+      display: block;
+
+    }
+    .footer-column-content-inner{
+
+      .list-unstyled{
+        text-align: center;
+      }
+
+    }
+  }
+}

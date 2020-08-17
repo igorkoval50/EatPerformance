@@ -1,0 +1,81 @@
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//
+// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
+
+
+.is-act-home{
+    .container-main{
+        padding-top: 0px;
+
+        .breadcrumb {
+            display: none !important;
+        }
+    }
+}
+
+.page-item{
+    &.active {
+        .page-link{
+            z-index: 0;
+        }
+    }
+}
+
+.cms-listing-col {
+    .btn-buy{
+        position: relative;
+        .buy-icon{
+            position: absolute;
+        }
+
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .cms-element-product-listing {
+        .cms-listing-col {
+            margin-bottom: 30px;
+            display: inline-block;
+            width: 50% !important;
+            padding: 0px 5px;
+
+            .product-name {
+                font-size: 15px;
+                line-height: normal;
+            }
+        }
+    }
+
+    .cms-section-sidebar-main-content.col-lg-8.col-xl-9 {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+}
+
+@include media-breakpoint-up(lg) {
+
+}
+
+@media screen and (max-width: 767px) {
+    body{
+        .content-main{
+            padding-top: 0px !important;
+        }
+    }
+}
