@@ -1,4 +1,4 @@
-import Myaddtocart from "./plugin/my-cart/my-cart.plugin";
+import Myaddtocart from './plugin/my-cart/my-cart.plugin';
 
 // Register them via the existing PluginManager
 const PluginManager = window.PluginManager;

@@ -29,6 +29,12 @@
                             <div class="row product-detail-main">
                                 {% block page_product_detail_media %}
                                     <div class="col-lg-4 product-detail-media">
+                                        <div class="batch">
+                                            {% set sportsMediaId7 = page.product.customFields.custom_icon_detail_listing_01 %}
+                                            {% set mediaCollection7 = searchMedia([sportsMediaId7], context.context) %}
+                                            {% set sportsMedia7 = mediaCollection7.get(sportsMediaId7) %}
+                                            <img src="{{ sportsMedia7.url }}" alt="test">
+                                        </div>
                                         {% if page.product.media %}
                                             {% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
                                                 'mediaItems': mediaItems,
@@ -37,26 +43,66 @@
                                                 'displayMode': 'contain',
                                                 'gutter': 5,
                                                 'minHeight': '430px',
-                                                'navigationArrows': 'inside',
-                                                'navigationDots': 'inside',
+                                                'navigationArrows': '',
+                                                'navigationDots': '',
                                                 'galleryPosition': 'left',
                                                 'isProduct': true,
                                                 'fallbackImageTitle': page.product.translated.name,
                                                 'startIndexThumbnails': page.product.cover.position + 1,
-                                                'startIndexSlider': page.product.cover.position + 1
+                                                'startIndexSlider': page.product.cover.position + 1,
                                             } %}
                                         {% endif %}
                                     </div>
                                 {% endblock %}
 
                                 {% block page_product_detail_tabs %}
-                                    <div class="col-lg-5 product-detail-tabs">
+                                    <div class="col-lg-5 product-detail-tabs custom-detail-tabs">
                                         {% block page_product_detail_headline %}
                                             <div class="align-items-center product-detail-headline">
                                                 {% sw_include '@Storefront/storefront/page/product-detail/headline.html.twig' %}
+                                                <h3 class="detail-custom-headline">{{ page.product.customFields.custom_info_detail_01}}</h3>
                                             </div>
                                         {% endblock %}
                                         {% sw_include '@Storefront/storefront/page/product-detail/description.html.twig' %}
+
+                                        {# simplify ID access #}
+                                        {% set sportsMediaId1 = page.product.customFields.custom_icon_detail_listing_03 %}
+                                        {% set sportsMediaId2 = page.product.customFields.custom_icon_detail_listing_04 %}
+                                        {% set sportsMediaId3 = page.product.customFields.custom_icon_detail_listing_05 %}
+                                        {% set sportsMediaId4 = page.product.customFields.custom_icon_detail_listing_06 %}
+                                        {% set sportsMediaId5 = page.product.customFields.custom_icon_detail_listing_07 %}
+
+                                        {# fetch media as batch - optimized for performance #}
+                                        {% set mediaCollection1 = searchMedia([sportsMediaId1], context.context) %}
+                                        {% set mediaCollection2 = searchMedia([sportsMediaId2], context.context) %}
+                                        {% set mediaCollection3 = searchMedia([sportsMediaId3], context.context) %}
+                                        {% set mediaCollection4 = searchMedia([sportsMediaId4], context.context) %}
+                                        {% set mediaCollection5 = searchMedia([sportsMediaId5], context.context) %}
+
+                                        {# extract single media object #}
+                                        {% set sportsMedia1 = mediaCollection1.get(sportsMediaId1) %}
+                                        {% set sportsMedia2 = mediaCollection2.get(sportsMediaId2) %}
+                                        {% set sportsMedia3 = mediaCollection3.get(sportsMediaId3) %}
+                                        {% set sportsMedia4 = mediaCollection4.get(sportsMediaId4) %}
+                                        {% set sportsMedia5 = mediaCollection5.get(sportsMediaId5) %}
+
+                                        <div class="detail-icon row">
+                                            <div class="col-md-12 icon-1">
+                                                <img src="{{ sportsMedia1.url }}" alt="test">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{ sportsMedia2.url }}" alt="test">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{ sportsMedia3.url }}" alt="test">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{ sportsMedia4.url }}" alt="test">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{ sportsMedia5.url }}" alt="test">
+                                            </div>
+                                        </div>
                                     </div>
                                 {% endblock %}
 
@@ -70,8 +116,52 @@
                     </div>
                 {% endblock %}
 
+                <div class="container">
+                    <div class="product-headline-h3">
+                        <h3> {{ 'productDetail.productHeadline'|trans|sw_sanitize }}</h3>
+                    </div>
+                    <div class="row row-product-info">
+                        <div class="col-lg-3">
+                            {% set sportsMediaId6 = page.product.customFields.custom_info_detail_02 %}
+                            {% set mediaCollection6 = searchMedia([sportsMediaId6], context.context) %}
+                            {% set sportsMedia6 = mediaCollection6.get(sportsMediaId6) %}
+                            <img src="{{ sportsMedia6.url }}" alt="test">
+                        </div>
+                        <div class="col-lg-3">
+                            <img style="max-width: 100%;" src="{{ page.product.cover.media.url }}" alt="url of image">
+                        </div>
+                        <div class="product-box box-one col-lg-3">
+                            {{ page.product.customFields.custom_info_detail_03 |trans|sw_sanitize  }}
+                        </div>
+
+                        <div class="product-box box-two col-lg-3">
+                            {{ page.product.customFields.custom_info_detail_04 |trans|sw_sanitize  }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row row-table">
+                        <div class="col-lg-4">
+                            <h3 class="table-headline">{{ 'productDetail.tableHeadlineOne'|trans|sw_sanitize }} </h3>
+                            {{ page.product.customFields.custom_table_detail_01|trans|sw_sanitize  }}
+                        </div>
+                        <div class="col-lg-4">
+                            <h3 class="table-headline">{{ 'productDetail.tableHeadlineTwo'|trans|sw_sanitize }} </h3>
+                            {{ page.product.customFields.custom_table_detail_02|trans|sw_sanitize  }}
+                        </div>
+                        <div class="col-lg-4">
+                            <h3 class="table-headline">{{ 'productDetail.tableHeadlineThree'|trans|sw_sanitize }} </h3>
+                            {{ page.product.customFields.custom_table_detail_03|trans|sw_sanitize  }}
+                        </div>
+                    </div>
+                </div>
+
                 {% block page_product_detail_cross_selling %}
                     <div class="product-detail-tabs product-detail-cross-selling">
+                       <div class="container">
+                           <h3>{{ 'productDetail.customerStreamOne'|trans|sw_sanitize }}</h3>
+                       </div>
                         {% sw_include '@Storefront/storefront/page/product-detail/cross-selling/tabs.html.twig' with {
                             crossSellings: page.crossSellings
                         } only %}
@@ -79,28 +169,34 @@
 
                 {% endblock %}
 
+                <div class="container">
+                    <div class="product-headline-h3">
+                        <h3> {{ 'productDetail.information'|trans|sw_sanitize }}</h3>
+                    </div>
+                    <div class="row three-boxs">
+                        <div class="product-box box-three col-lg-4">
+                            <p>{{ page.product.customFields.custom_info_detail_05 |trans|sw_sanitize  }}</p>
+                        </div>
+
+                        <div class="product-box box-three col-lg-4">
+                            <p>{{ page.product.customFields.custom_info_detail_06 |trans|sw_sanitize  }}</p>
+                        </div>
+
+                        <div class="product-box box-three col-lg-4">
+                            <p>{{ page.product.customFields.custom_info_detail_07 |trans|sw_sanitize  }}</p>
+                        </div>
+                    </div>
+                </div>
+
                 {% block page_product_detail_cross_selling_second %}
                     <div class="product-detail-tabs product-detail-cross-selling">
+                       <div class="container">
+                           <h3>{{ 'productDetail.customerStreamTwo'|trans|sw_sanitize }}</h3>
+                       </div>
                         {% sw_include '@Storefront/storefront/page/product-detail/cross-selling/tabs-second.html.twig' with {
                             crossSellings: page.crossSellings
                         } only %}
                     </div>
-
-
-                    {# simplify ID access #}
-                    {#{% set sportsMediaId1 = page.product.customFields.custom_icon_detail_listing_01 %}#}
-                    {#{% set sportsMediaId2 = page.product.customFields.custom_icon_detail_listing_02 %}#}
-
-                    {# fetch media as batch - optimized for performance #}
-                    {#{% set mediaCollection1 = searchMedia([sportsMediaId1], context.context) %}#}
-                    {#{% set mediaCollection2 = searchMedia([sportsMediaId2], context.context) %}#}
-
-                    {# extract single media object #}
-                    {#{% set sportsMedia1 = mediaCollection1.get(sportsMediaId1) %}#}
-                    {#{% set sportsMedia2 = mediaCollection2.get(sportsMediaId2) %}#}
-
-                    {#<img src="{{ sportsMedia1.url }}" alt="test">#}
-                    {#<img src="{{ sportsMedia2.url }}" alt="test">#}
 
                 {% endblock %}
             {% endblock %}
