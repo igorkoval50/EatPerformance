@@ -1,9 +1,5 @@
 {% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
 
-{% block base_head %}
-    {% sw_include '@Storefront/storefront/page/product-detail/meta.html.twig' %}
-{% endblock %}
-
 {% block base_content %}
     {% block page_product_detail %}
 
@@ -30,10 +26,15 @@
                                 {% block page_product_detail_media %}
                                     <div class="col-lg-4 product-detail-media">
                                         <div class="batch">
-                                            {% set sportsMediaId7 = page.product.customFields.custom_icon_detail_listing_01 %}
-                                            {% set mediaCollection7 = searchMedia([sportsMediaId7], context.context) %}
-                                            {% set sportsMedia7 = mediaCollection7.get(sportsMediaId7) %}
-                                            <img src="{{ sportsMedia7.url }}" alt="test">
+                                            {% if page.product.customFields.custom_icon_detail_listing_01 != null %}
+                                                {% set sportsMediaId7 = page.product.customFields.custom_icon_detail_listing_01 %}
+                                                {% set mediaCollection7 = searchMedia([sportsMediaId7], context.context) %}
+                                                {% set sportsMedia7 = mediaCollection7.get(sportsMediaId7) %}
+                                            {% endif %}
+
+                                            {% if page.product.customFields.custom_icon_detail_listing_01 != null %}
+                                                <img style="max-width:100%;" src="{{ sportsMedia7.url }}" alt="test">
+                                            {% endif %}
                                         </div>
                                         {% if page.product.media %}
                                             {% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
@@ -60,47 +61,72 @@
                                         {% block page_product_detail_headline %}
                                             <div class="align-items-center product-detail-headline">
                                                 {% sw_include '@Storefront/storefront/page/product-detail/headline.html.twig' %}
-                                                <h3 class="detail-custom-headline">{{ page.product.customFields.custom_info_detail_01}}</h3>
+
+                                                {% if page.product.customFields.custom_info_detail_01 != null %}
+                                                    <h3 class="detail-custom-headline">{{ page.product.customFields.custom_info_detail_01}}</h3>
+                                                {% endif %}
                                             </div>
                                         {% endblock %}
                                         {% sw_include '@Storefront/storefront/page/product-detail/description.html.twig' %}
 
-                                        {# simplify ID access #}
-                                        {% set sportsMediaId1 = page.product.customFields.custom_icon_detail_listing_03 %}
-                                        {% set sportsMediaId2 = page.product.customFields.custom_icon_detail_listing_04 %}
-                                        {% set sportsMediaId3 = page.product.customFields.custom_icon_detail_listing_05 %}
-                                        {% set sportsMediaId4 = page.product.customFields.custom_icon_detail_listing_06 %}
-                                        {% set sportsMediaId5 = page.product.customFields.custom_icon_detail_listing_07 %}
+                                        {% if page.product.customFields.custom_icon_detail_listing_03 != null %}
+                                            {% set sportsMediaId1 = page.product.customFields.custom_icon_detail_listing_03 %}
+                                            {% set mediaCollection1 = searchMedia([sportsMediaId1], context.context) %}
+                                            {% set sportsMedia1 = mediaCollection1.get(sportsMediaId1) %}
+                                        {% endif %}
 
-                                        {# fetch media as batch - optimized for performance #}
-                                        {% set mediaCollection1 = searchMedia([sportsMediaId1], context.context) %}
-                                        {% set mediaCollection2 = searchMedia([sportsMediaId2], context.context) %}
-                                        {% set mediaCollection3 = searchMedia([sportsMediaId3], context.context) %}
-                                        {% set mediaCollection4 = searchMedia([sportsMediaId4], context.context) %}
-                                        {% set mediaCollection5 = searchMedia([sportsMediaId5], context.context) %}
 
-                                        {# extract single media object #}
-                                        {% set sportsMedia1 = mediaCollection1.get(sportsMediaId1) %}
-                                        {% set sportsMedia2 = mediaCollection2.get(sportsMediaId2) %}
-                                        {% set sportsMedia3 = mediaCollection3.get(sportsMediaId3) %}
-                                        {% set sportsMedia4 = mediaCollection4.get(sportsMediaId4) %}
-                                        {% set sportsMedia5 = mediaCollection5.get(sportsMediaId5) %}
+                                        {% if page.product.customFields.custom_icon_detail_listing_04 != null %}
+                                            {% set sportsMediaId2 = page.product.customFields.custom_icon_detail_listing_04 %}
+                                            {% set mediaCollection2 = searchMedia([sportsMediaId2], context.context) %}
+                                            {% set sportsMedia2 = mediaCollection2.get(sportsMediaId2) %}
+                                        {% endif %}
+
+                                        {% if page.product.customFields.custom_icon_detail_listing_05 != null %}
+                                            {% set sportsMediaId3 = page.product.customFields.custom_icon_detail_listing_05 %}
+                                            {% set mediaCollection3 = searchMedia([sportsMediaId3], context.context) %}
+                                            {% set sportsMedia3 = mediaCollection3.get(sportsMediaId3) %}
+                                        {% endif %}
+
+                                        {% if page.product.customFields.custom_icon_detail_listing_06 != null %}
+                                            {% set sportsMediaId4 = page.product.customFields.custom_icon_detail_listing_06 %}
+                                            {% set mediaCollection4 = searchMedia([sportsMediaId4], context.context) %}
+                                            {% set sportsMedia4 = mediaCollection4.get(sportsMediaId4) %}
+                                        {% endif %}
+
+                                        {% if page.product.customFields.custom_icon_detail_listing_07 != null %}
+                                            {% set sportsMediaId5 = page.product.customFields.custom_icon_detail_listing_07 %}
+                                            {% set mediaCollection5 = searchMedia([sportsMediaId5], context.context) %}
+                                            {% set sportsMedia5 = mediaCollection5.get(sportsMediaId5) %}
+                                        {% endif %}
+
+
 
                                         <div class="detail-icon row">
                                             <div class="col-md-12 icon-1">
-                                                <img src="{{ sportsMedia1.url }}" alt="test">
+                                                {% if page.product.customFields.custom_icon_detail_listing_03 != null %}
+                                                    <img style="max-width:100%;" src="{{ sportsMedia1.url }}" alt="test">
+                                                {% endif %}
                                             </div>
                                             <div class="col-md-3">
-                                                <img src="{{ sportsMedia2.url }}" alt="test">
+                                                {% if page.product.customFields.custom_icon_detail_listing_04 != null %}
+                                                    <img style="max-width:100%;" src="{{ sportsMedia2.url }}" alt="test">
+                                                {% endif %}
                                             </div>
                                             <div class="col-md-3">
-                                                <img src="{{ sportsMedia3.url }}" alt="test">
+                                                {% if page.product.customFields.custom_icon_detail_listing_05 != null %}
+                                                    <img style="max-width:100%;" src="{{ sportsMedia3.url }}" alt="test">
+                                                {% endif %}
                                             </div>
                                             <div class="col-md-3">
-                                                <img src="{{ sportsMedia4.url }}" alt="test">
+                                                {% if page.product.customFields.custom_icon_detail_listing_06 != null %}
+                                                    <img style="max-width:100%;" src="{{ sportsMedia4.url }}" alt="test">
+                                                {% endif %}
                                             </div>
                                             <div class="col-md-3">
-                                                <img src="{{ sportsMedia5.url }}" alt="test">
+                                                {% if page.product.customFields.custom_icon_detail_listing_07 != null %}
+                                                    <img style="max-width:100%;" src="{{ sportsMedia5.url }}" alt="test">
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>
@@ -122,20 +148,29 @@
                     </div>
                     <div class="row row-product-info">
                         <div class="col-lg-3">
-                            {% set sportsMediaId6 = page.product.customFields.custom_info_detail_02 %}
-                            {% set mediaCollection6 = searchMedia([sportsMediaId6], context.context) %}
-                            {% set sportsMedia6 = mediaCollection6.get(sportsMediaId6) %}
-                            <img src="{{ sportsMedia6.url }}" alt="test">
+                            {% if page.product.customFields.custom_info_detail_02  != null %}
+                                {% set sportsMediaId6 = page.product.customFields.custom_info_detail_02 %}
+                                {% set mediaCollection6 = searchMedia([sportsMediaId6], context.context) %}
+                                {% set sportsMedia6 = mediaCollection6.get(sportsMediaId6) %}
+                            {% endif %}
+
+                            {% if page.product.customFields.custom_info_detail_02  != null %}
+                                <img style="max-width:100%;" src="{{ sportsMedia6.url }}" alt="test">
+                            {% endif %}
                         </div>
                         <div class="col-lg-3">
-                            <img style="max-width: 100%;" src="{{ page.product.cover.media.url }}" alt="url of image">
+                            <img style="max-width:100%;" style="max-width: 100%;" src="{{ page.product.cover.media.url }}" alt="url of image">
                         </div>
                         <div class="product-box box-one col-lg-3">
-                            {{ page.product.customFields.custom_info_detail_03 |trans|sw_sanitize  }}
+                            {% if page.product.customFields.custom_info_detail_03 != null %}
+                                {{ page.product.customFields.custom_info_detail_03 |trans|sw_sanitize  }}
+                            {% endif %}
                         </div>
 
                         <div class="product-box box-two col-lg-3">
-                            {{ page.product.customFields.custom_info_detail_04 |trans|sw_sanitize  }}
+                            {% if page.product.customFields.custom_info_detail_04 != null %}
+                                {{ page.product.customFields.custom_info_detail_04 |trans|sw_sanitize  }}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -144,24 +179,30 @@
                     <div class="row row-table">
                         <div class="col-lg-4">
                             <h3 class="table-headline">{{ 'productDetail.tableHeadlineOne'|trans|sw_sanitize }} </h3>
-                            {{ page.product.customFields.custom_table_detail_01|trans|sw_sanitize  }}
+                            {% if page.product.customFields.custom_table_detail_01  != null %}
+                                {{ page.product.customFields.custom_table_detail_01|trans|sw_sanitize  }}
+                            {% endif %}
                         </div>
                         <div class="col-lg-4">
                             <h3 class="table-headline">{{ 'productDetail.tableHeadlineTwo'|trans|sw_sanitize }} </h3>
-                            {{ page.product.customFields.custom_table_detail_02|trans|sw_sanitize  }}
+                            {% if page.product.customFields.custom_table_detail_02  != null %}
+                                {{ page.product.customFields.custom_table_detail_02|trans|sw_sanitize  }}
+                            {% endif %}
                         </div>
                         <div class="col-lg-4">
                             <h3 class="table-headline">{{ 'productDetail.tableHeadlineThree'|trans|sw_sanitize }} </h3>
-                            {{ page.product.customFields.custom_table_detail_03|trans|sw_sanitize  }}
+                            {% if page.product.customFields.custom_table_detail_03  != null %}
+                                {{ page.product.customFields.custom_table_detail_03|trans|sw_sanitize  }}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
 
                 {% block page_product_detail_cross_selling %}
                     <div class="product-detail-tabs product-detail-cross-selling">
-                       <div class="container">
-                           <h3>{{ 'productDetail.customerStreamOne'|trans|sw_sanitize }}</h3>
-                       </div>
+                        <div class="container">
+                            <h3>{{ 'productDetail.customerStreamOne'|trans|sw_sanitize }}</h3>
+                        </div>
                         {% sw_include '@Storefront/storefront/page/product-detail/cross-selling/tabs.html.twig' with {
                             crossSellings: page.crossSellings
                         } only %}
@@ -175,24 +216,30 @@
                     </div>
                     <div class="row three-boxs">
                         <div class="product-box box-three col-lg-4">
-                            <p>{{ page.product.customFields.custom_info_detail_05 |trans|sw_sanitize  }}</p>
+                            {% if page.product.customFields.custom_info_detail_05 != null %}
+                                <p>{{ page.product.customFields.custom_info_detail_05 |trans|sw_sanitize  }}</p>
+                            {% endif %}
                         </div>
 
                         <div class="product-box box-three col-lg-4">
-                            <p>{{ page.product.customFields.custom_info_detail_06 |trans|sw_sanitize  }}</p>
+                            {% if page.product.customFields.custom_info_detail_06 != null %}
+                                <p>{{ page.product.customFields.custom_info_detail_06 |trans|sw_sanitize  }}</p>
+                            {% endif %}
                         </div>
 
                         <div class="product-box box-three col-lg-4">
-                            <p>{{ page.product.customFields.custom_info_detail_07 |trans|sw_sanitize  }}</p>
+                            {% if page.product.customFields.custom_info_detail_07 != null %}
+                                <p>{{ page.product.customFields.custom_info_detail_07 |trans|sw_sanitize  }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
 
                 {% block page_product_detail_cross_selling_second %}
                     <div class="product-detail-tabs product-detail-cross-selling">
-                       <div class="container">
-                           <h3>{{ 'productDetail.customerStreamTwo'|trans|sw_sanitize }}</h3>
-                       </div>
+                        <div class="container">
+                            <h3>{{ 'productDetail.customerStreamTwo'|trans|sw_sanitize }}</h3>
+                        </div>
                         {% sw_include '@Storefront/storefront/page/product-detail/cross-selling/tabs-second.html.twig' with {
                             crossSellings: page.crossSellings
                         } only %}
@@ -203,3 +250,4 @@
         </div>
     {% endblock %}
 {% endblock %}
+
